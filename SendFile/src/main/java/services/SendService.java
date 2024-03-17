@@ -9,8 +9,8 @@ import lombok.SneakyThrows;
 public class SendService {
     
     @SneakyThrows
-    public static String send(String localHost, int port, String filePath){
-        Socket socket = new Socket(localHost, port);
+    public static void send(String hostIp, int port, String filePath){
+        Socket socket = new Socket(hostIp, port);
         OutputStream outputStream = socket.getOutputStream();
         DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
         
@@ -19,7 +19,5 @@ public class SendService {
         //SendFile
         dataOutputStream.writeInt(bytes.length);
         dataOutputStream.write(bytes);
-        
-        return "Your file sent successfuly";
     }
 }
